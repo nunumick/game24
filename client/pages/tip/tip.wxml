@@ -1,0 +1,9 @@
+<!--client/pages/tip/tip.wxml-->
+<view>
+<scroll-view scroll-y>
+  <view class="expression {{index%2===0?'odd':''}}" wx:for="{{expressions}}" wx:key="{{index}}">
+    <text class="no">{{index+1}}).  </text>
+    <text>{{expressions[index]}}</text>
+  </view>
+</scroll-view>
+</view>

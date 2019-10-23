@@ -1,0 +1,35 @@
+<scroll-view scroll-y class="course-wrap">
+    <view class="container">
+        <view wx:for="{{courseLens}}" wx:key="{{index}}" class="list">
+            <navigator url="../main/main?id={{courseId}}&game={{index}}&top={{score.length}}" wx:if="{{index+1 === score[index].level}}" id="{{index}}" class="list-wrap solved" bindtap="tap" hover-class="btn-taped">
+                <view class="score">
+                    <text class="num">{{index+1}}</text>
+                </view>
+                <view class="star light">
+                    <text wx:for="{{score[index].score}}" wx:key="{{i}}" class="iconfont icon-star"></text>
+                </view>
+            </navigator>
+            <navigator url="../main/main?id={{courseId}}&game={{index}}&top={{score.length}}" wx:elif="{{index === score.length}}" id="{{index}}" class="list-wrap unlock" bindtap="tap" hover-class="btn-taped">
+                <view class="score">
+                    <text class="num">{{index+1}}</text>
+                </view>
+                <view class="star gray">
+                    <text class="iconfont icon-star"></text>
+                    <text class="iconfont icon-star"></text>
+                    <text class="iconfont icon-star"></text>
+                </view>
+            </navigator>
+            <view wx:else class="list-wrap">
+                <view class="score">
+                    <text class="num">{{index+1}}</text>
+                    <text class="iconfont icon-lock"></text>
+                </view>
+                <view class="star gray">
+                    <text class="iconfont icon-star"></text>
+                    <text class="iconfont icon-star"></text>
+                    <text class="iconfont icon-star"></text>
+                </view>
+            </view>
+        </view>
+    </view>
+</scroll-view>

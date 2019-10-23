@@ -1,0 +1,20 @@
+/* client/pages/tip/tip.wxss */
+page{
+    background: radial-gradient( rgba(255, 255, 255, 0.5), rgba(255,255,0,0.2), rgba(218,165,32,0.5));
+    height:100%;
+}
+.expression{
+  font-size:40rpx;
+  border-bottom:1rpx solid goldenrod;
+  padding:10rpx 80rpx;
+  background:rgba(255,255,255,0.2);
+  font-weight: 700;
+  font-style: italic;
+  color:#444;
+}
+.no{
+  color:#999;
+}
+.odd{
+  background:rgba(255,255,255,0.5);
+}

@@ -1,0 +1,17 @@
+<view>
+    <view class="btn" id="2" bindtap="initLevel">
+        <text>简单</text>
+    </view>
+    <view class="btn" id="3" bindtap="initLevel">
+        <text>中等</text>
+    </view>
+    <view class="btn" id="4" bindtap="initLevel">
+        <text>困难</text>
+    </view>
+    <view class="btn" id="5" bindtap="initLevel">
+        <text>大师</text>
+    </view>
+    <view class="btn" id="6" bindtap="initLevel">
+        <text>英雄</text>
+    </view>
+</view>
