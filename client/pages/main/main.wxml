@@ -6,51 +6,48 @@
             <text class="icon-menu iconfont">menu</text>
         </view>
         -->
-        <view class="tool-pre disabled" hover-class="tool-tap"  bindtap="toolPre">
+        <view class="tool-pre {{!pre?'disabled':''}}" hover-class="tool-tap btn-taped"  bindtap="toolPre">
             <text class="icon-pre iconfont">pre</text>
         </view>
-        <view class="tool-next" hover-class="tool-tap" bindtap="toolNext">
+        <view class="tool-next {{!next?'disabled':''}}" hover-class="tool-tap btn-taped" bindtap="toolNext">
             <text class="icon-next iconfont">next</text>
         </view>
-        <view class="tool-undo disabled" hover-class="tool-tap" bindtap="toolUndo">
+        <view class="tool-undo {{!step?'disabled':''}}" hover-class="tool-tap btn-taped" bindtap="toolUndo">
             <text class="icon-undo iconfont">undo</text>
         </view>
-        <view class="tool-redo" hover-class="tool-tap" bindtap="toolRedo">
+        <view class="tool-redo {{step == history.length - 1 ? 'disabled': ''}}" hover-class="tool-tap btn-taped" bindtap="toolRedo">
             <text class="icon-redo iconfont">redo</text>
         </view>
-        <view class="tool-reset" hover-class="tool-tap" bindtap="toolReset">
+        <view class="tool-reset" hover-class="tool-tap btn-taped" bindtap="toolReset">
             <text class="icon-reset iconfont">reset</text>
         </view>
     </view>
     <view class="score-wrap">
-        <view class="no-wrap">
-            <text class="no">第 1/1362 关</text>
+        <view class="no-wrap {{solved?'disappear':''}}" wx:if="{{puzzles.length>1}}">
+            <text class="no">第 {{position+1}}/{{puzzles.length}} 关</text>
         </view>
-        <view class="time-wrap">
+        <view class="time-wrap {{solved?'disappear':''}}">
             <text class="time">时间：{{time}}</text>
+        </view>
+        <view class="score-star {{solved?'show':''}} score-{{score}}">
+            <text wx:for="{{3}}" wx:key="{{index}}" class="iconfont icon-star star-{{index+1}}"></text>
+        </view>
+        <view class="goto-home" wx:if="{{share}}" >
+          <button class="iconfont get-btn get-home" open-type="home"bindtap="gotoHome">回首页</button>
+        </view>
+        <view class="game-tip" wx:if="{{!share}}">
+          <button class="iconfont get-btn get-help icon-fenxiang" open-type="share" wx:if="{{time>=10}}">求助</button>
+          <button class="iconfont get-btn get-expression icon-help" bindtap="getExpression" wx:if="{{time>=100}}">答案</button>
         </view>
     </view>
     <view class="numbers-wrap">
-        <view class="numbers-top">
-            <view class="number number-tl {{numberSelected[0]==0 ? 'calculate':''}}" data-number-index="0" data-number-value="{{current[0]}}" hover-class="number-tap" bindtap="numberSelect">
-                <text class="icon-num">{{current[0]}}</text>
-            </view>
-            <view class="number number-tr {{numberSelected[0]==1 ? 'calculate':''}}" data-number-index="1" data-number-value="{{current[1]}}" hover-class="number-tap" bindtap="numberSelect">
-                <text class="icon-num">{{current[1]}}</text>
-            </view>
-        </view>
-        <view class="numbers-bottom">
-            <view class="number number-bl {{numberSelected[0]==2 ? 'calculate':''}}" data-number-index="2" data-number-value="{{current[2]}}" hover-class="number-tap" bindtap="numberSelect">
-                <text class="icon-num">{{current[2]}}</text>
-            </view>
-            <view class="number number-br {{numberSelected[0]==3 ? 'calculate':''}}" data-number-index="3" data-number-value="{{current[3]}}" hover-class="number-tap" bindtap="numberSelect">
-                <text class="icon-num">{{current[3]}}</text>
-            </view>
+        <view wx:for="{{screen}}" wx:key="{{index}}" class="number number-{{['tl','tr','bl','br'][index]}} {{numberSelected[0]==index ? 'calculate':''}} {{numberTaped===index ? 'btn-taped':''}} size-{{length[index]}} {{item||'disappear'}} {{solved||fold?'solved':''}} {{wrong?'wrong':''}}" data-number-index="{{index}}" data-number-value="{{current[index]}}" bindtap="numberSelect">
+            <text class="icon-num">{{item||''}}</text>
         </view>
     </view>
     <view class="operator-wrap">
         <view wx:for="{{operators}}" wx:key="{{index}}" class="button {{item}} {{operatorSelected[0]==item ? 'selected':''}}">
-            <view class="block" data-opr="{{item}}" hover-class="operator-tap" bindtap="operatorSelect">
+            <view class="block" data-opr="{{item}}" hover-class="operator-tap btn-taped" bindtap="operatorSelect">
                 <text class="iconfont icon-{{item}}"></text>
             </view>
         </view>

@@ -1,48 +1,53 @@
 <!--index.wxml-->
-<view class="container">
-    <!-- 用户登录测试 -->
-    <view class="userinfo">
-        <image
-            class="userinfo-avatar"
-            src="{{logged ? userInfo.avatarUrl : './user-unlogin.png'}}"
-            background-size="cover"
-        ></image>
-        <view>
-            <button class="userinfo-nickname" wx:if="{{!logged}}" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">点击测试登录接口</button>
-            <text class="userinfo-nickname" wx:else>{{userInfo.nickName}}</text>
-        </view>
-    </view>
-
-
-    <!-- 上传图片测试 -->
-    <view class="uploader">
-        <view class="uploader-text" bindtap="doUpload">
-            <text>上传图片</text>
-        </view>
-        <view class="uploader-container" wx:if="{{imgUrl}}">
-            <image
-                class="uploader-image"
-                src="{{imgUrl}}"
-                mode="aspectFit"
-                bindtap="previewImg"
-            ></image>
-        </view>
-    </view>
-
-
-    <!-- 上传图片测试 -->
-    <view class="uploader">
-        <navigator url="../addCgi/addCgi" open-type="navigate" class="uploader-text">
-            <text>快速增加 CGI</text>
-        </navigator>
-    </view>
-
+<view class="container {{logged ? '' : 'layout-center'}}">
     <!-- 趣味24首页 -->
-    <view class="uploader">
-        <navigator url="../main/main" open-type="navigate" class="uploader-text">
-            <text>Main</text>
-        </navigator>
+    <view wx:if="{{!logged}}" class="guide-wrap">
+        <view class="guide-text">
+            <text class="text-title">欢迎来到“琪”思妙想24的世界</text>
+            <text class="text-content">24点游戏是从扑克牌游戏发展而来，一副牌中抽去大小王剩下52张，从中任取4张牌，用加减乘除算成24，每张牌只能用一次。从A到K13个数中抽取4个数，总共有1820个组合，能用四则运算计算出24的只有1362个组合。</text>
+        </view>
+        <button class="user-enter" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo" bindtap="tap" hover-class="button-hover">开始游戏</button>
     </view>
-    <!-- 趣味24对战 -->
-    <!-- 我的战绩 -->
+    <view wx:else class="user-menu">
+        <view class="userinfo-wrap">
+            <view class="userinfo">
+                <image
+                    class="userinfo-avatar"
+                    src="{{logged ? (userInfo.avatarUrl || './user-unlogin.png') : './user-unlogin.png'}}"
+                    background-size="cover"
+                ></image>
+                <view>
+                <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+                </view>
+            </view>
+            <view class="userinfo-score">
+                得分: 
+                <text class="score-num">{{totalScore}}</text>
+            </view>
+        </view>
+        <view class="navigators">
+            <navigator url="../main/main?id=1" open-type="navigate" class="iconfont navigator-text {{scores[0]>=0 ? 'enable':''}} {{scores[0] === courses[0][1] ? 'solved totally-solved':''}}" bindtap="tap" hover-class="btn-taped">
+                <view class="title">
+                    <text class="">{{courses[0][0]}}</text>
+                </view>
+                <view class="score">
+                    <text wx:if="{{scores[0]>=0}}">{{scores[0]}}/</text>
+                    <text>{{courses[0][1]}}</text>
+                </view>
+            </navigator>
+            <navigator wx:for="courses" wx:key="{{index}}" wx:if="{{index>0 && index<courses.length}}" url="../course/course?id={{index+1}}&length={{courses[index][1]}}" open-type="navigate" class="iconfont navigator-text {{scores[0]>=0 ? 'enable':''}} {{levels[index].length === courses[index][1] ? 'solved' : ''}} {{scores[index] === courses[index][1]*3 ? 'totally-solved':''}}" bindtap="tap" hover-class="btn-taped">
+                <view class="title">
+                <text>{{courses[index][0]}}</text>
+                </view>
+                <view class="score">
+                    <text class="icon-star iconfont star"></text>
+                    <text wx:if="{{scores[index]>=0}}">{{scores[index]}}/</text>
+                    <text>{{courses[index][1] * 3}}</text>
+                </view>
+            </navigator>
+        </view>
+    </view>
+    <!--
+    <navigator url="/pages/tip/tip?puzzle=2,3,4,1">test</navigator>
+    -->
 </view>

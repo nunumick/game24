@@ -1,12 +1,17 @@
 {
-	"client": "./client",
-	"svr": "./server",
-	"miniprogramRoot": "./client",
-	"qcloudRoot": "./server",
+	"client": "client/",
+	"svr": "server/",
+	"miniprogramRoot": "client/",
+	"qcloudRoot": "server/",
 	"setting": {
+		"urlCheck": true,
+		"es6": true,
+		"postcss": true,
+		"minified": true,
 		"newFeature": true
 	},
 	"appid": "wx6b24c66893750749",
-	"projectname": "%E8%B6%A3%E5%91%B324",
+	"projectname": "琪思妙想24",
+	"libVersion": "2.4.1",
 	"condition": {}
 }

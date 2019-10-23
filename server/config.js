@@ -8,8 +8,13 @@ const CONF = {
     // 微信小程序 App Secret
     appSecret: '',
 
+    //https://github.com/tencentyun/wafer2-quickstart/issues/13
     // 是否使用腾讯云代理登录小程序
     useQcloudLogin: true,
+
+    qcloudAppId:"1257040329",
+    qcloudAppSecretId:"AKIDQq5DE5QIdqIbjgaWItOjsrKk2DF6mOsC",
+    qcloudAppSecretKey:"KXaSB0lNtHUWNBsR1gJp9HF3HPiswrcC",
 
     /**
      * MySQL 配置，用来存储 session 和用户信息
@@ -21,7 +26,7 @@ const CONF = {
         port: 3306,
         user: 'root',
         db: 'cAuth',
-        pass: 'wx6b24c66893750749',
+        pass: 'Binggun45!(*@64',
         char: 'utf8mb4'
     },
 

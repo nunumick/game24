@@ -32,4 +32,10 @@ router.get('/message', controllers.message.get)
 // POST 用来处理微信转发过来的客服消息
 router.post('/message', controllers.message.post)
 
+router.get('/course', controllers.course.get)
+router.post('/course', controllers.course.post)
+router.get('/score', validationMiddleware, controllers.score.get)
+router.get('/allscore', validationMiddleware, controllers.score.all)
+router.post('/score', validationMiddleware, controllers.score.post)
+
 module.exports = router

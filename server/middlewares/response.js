@@ -1,4 +1,4 @@
-const debug = require('debug')('koa-weapp-demo')
+const debug = require('debug')('koa-weapp-game24')
 
 /**
  * 响应处理模块

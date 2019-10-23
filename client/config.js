@@ -3,7 +3,7 @@
  */
 
 // 此处主机域名修改成腾讯云解决方案分配的域名
-var host = 'https://58gzn9el.qcloud.la';
+var host ='https://115648161.nunumick.club';
 
 var config = {
 
@@ -21,7 +21,12 @@ var config = {
         tunnelUrl: `${host}/weapp/tunnel`,
 
         // 上传图片接口
-        uploadUrl: `${host}/weapp/upload`
+        uploadUrl: `${host}/weapp/upload`,
+        // 上传图片接口
+        scoreUrl: `${host}/weapp/score`,
+        courseUrl: `${host}/weapp/course`,
+        allScoreUrl: `${host}/weapp/allscore`,
+
     }
 };
 

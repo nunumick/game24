@@ -1,5 +1,5 @@
 const { tunnel } = require('../qcloud')
-const debug = require('debug')('koa-weapp-demo')
+const debug = require('debug')('koa-weapp-game24')
 
 /**
  * 这里实现一个简单的聊天室
