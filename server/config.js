@@ -12,9 +12,9 @@ const CONF = {
     // 是否使用腾讯云代理登录小程序
     useQcloudLogin: true,
 
-    qcloudAppId:"1257040329",
-    qcloudAppSecretId:"AKIDQq5DE5QIdqIbjgaWItOjsrKk2DF6mOsC",
-    qcloudAppSecretKey:"KXaSB0lNtHUWNBsR1gJp9HF3HPiswrcC",
+    qcloudAppId:"",
+    qcloudAppSecretId:"",
+    qcloudAppSecretKey:"",
 
     /**
      * MySQL 配置，用来存储 session 和用户信息
@@ -22,11 +22,11 @@ const CONF = {
      * 开发环境下，MySQL 的初始密码为您的微信小程序 appid
      */
     mysql: {
-        host: 'localhost',
-        port: 3306,
-        user: 'root',
-        db: 'cAuth',
-        pass: 'Binggun45!(*@64',
+        host: '',
+        port: 3306 ,
+        user: '',
+        db: '',
+        pass: '',
         char: 'utf8mb4'
     },
 
@@ -44,7 +44,7 @@ const CONF = {
 
     // 微信登录态有效期
     wxLoginExpires: 7200,
-    wxMessageToken: 'abcdefgh'
+    wxMessageToken: ''
 }
 
 module.exports = CONF
